@@ -28,3 +28,28 @@ curl -X POST http://localhost:5000/produtos -H "Content-Type: application/json" 
 1. basta colocar no terminal
 curl -X GET http://localhost:5000/produtos
 
+### Documentação da API até agora
+Rotas Disponíveis:
+
+1. Vendedores
+   - GET /vendedores: Lista todos os vendedores.
+   - POST /vendedores: Adiciona um novo vendedor.
+
+2. Classes de Produtos
+   - GET /classes: Lista todas as classes de produtos.
+   - POST /classes: Adiciona uma nova classe de produto.
+
+3. Produtos
+   - GET /produtos: Lista todos os produtos.
+   - GET /produtos/{id}: Retorna um produto específico pelo ID.
+   - POST /produtos: Adiciona um novo produto.
+   - PUT /produtos/{id}: Atualiza os dados de um produto existente.
+   - DELETE /produtos/{id}: Remove um produto.
+
+Status Codes:
+- 200 OK: Requisição bem-sucedida.
+- 201 Created: Recurso criado com sucesso.
+- 400 Bad Request: Erro na requisição do cliente.
+- 404 Not Found: Recurso não encontrado.
+- 500 Internal Server Error: Erro no servidor.
+

@@ -1,38 +1,88 @@
+/* Definindo o fundo e o estilo geral */
+body {
+  background: linear-gradient(135deg, #f8f8f8, #e0e0e0); /* Gradiente de fundo */
+  font-family: 'Arial', sans-serif; /* Definindo a fonte */
+  margin: 0;
+  padding: 0;
+  display: flex; /* Centralizando o conteúdo */
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; /* Centraliza verticalmente */
+  height: 100vh; /* Preenche toda a altura da janela */
+}
+
+/* Centralizando a aplicação */
 .App {
+  background-color: #ffffff; /* Fundo branco para o conteúdo */
+  padding: 20px;
+  border-radius: 10px; /* Bordas arredondadas */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Sombras para profundidade */
+  max-width: 800px;
+  width: 100%;
+  text-align: center; /* Texto centralizado */
+}
+
+/* Estilo para o título */
+h1 {
+  font-size: 2.5rem;
+  color: #333; /* Cor escura para o título */
+  margin-bottom: 20px; /* Espaço abaixo do título */
+}
+
+/* Estilo para os botões */
+button {
+  background-color: #4CAF50; /* Cor de fundo dos botões */
+  color: white;
+  border: none;
+  padding: 10px 20px;
   text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 30px; /* Bordas arredondadas */
+  transition: background-color 0.3s ease; /* Efeito de transição */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Mudando a cor dos botões ao passar o mouse */
+button:hover {
+  background-color: #45a049; /* Cor ao passar o mouse */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Estilo para os formulários */
+form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center; /* Centralizando os elementos do formulário */
+  margin-bottom: 20px; /* Espaço abaixo do formulário */
 }
 
-.App-link {
-  color: #61dafb;
+/* Estilo para os inputs */
+input[type="text"], input[type="number"] {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #ddd; /* Borda suave */
+  border-radius: 5px; /* Bordas arredondadas */
+  width: 80%; /* Largura do input */
+  max-width: 400px;
+  font-size: 1rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Estilo para a lista de itens */
+ul {
+  list-style: none; /* Remove os pontos de lista */
+  padding: 0; /* Remove o padding da lista */
+}
+
+li {
+  background-color: #f4f4f4; /* Fundo claro para os itens */
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px; /* Bordas arredondadas para os itens */
+  font-size: 1.2rem; /* Tamanho da fonte dos itens */
+}
+
+/* Estilo do contêiner de ações (Adicionar, Deletar) */
+.actions-container {
+  margin-bottom: 30px; /* Espaço entre a área de ações e a lista de produtos */
 }

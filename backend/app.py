@@ -196,6 +196,7 @@ def read_modalidade():
         {
             "id_modalidade": modalidade.id_modalidade,
             "nome_modalidade": modalidade.nome_modalidade,
+            "saldo_modalidade": modalidade.saldo_modalidade,
         }
         for modalidade in modalidades
     ]

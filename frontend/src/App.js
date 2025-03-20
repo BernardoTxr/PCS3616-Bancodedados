@@ -1,16 +1,25 @@
 import React from 'react';
-import ItemsList from './ItemsList';
-import AddProductForm from './AddProductForm';
-import DeleteProduct from './DeleteProduct';
+import Home from './pages/Home';
+import Navbar from './components/Navbar';
+import Atletas from './pages/Atletas';
+import Modalidades from './pages/Modalidades';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <h1>Gestão de Produtos</h1>
-      <AddProductForm />
-      <DeleteProduct />
-      <ItemsList />
+      <Router>
+      <Navbar /> {/* A Navbar aparece em todas as páginas */}
+      <div className="content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/atletas" element={<Atletas />} />
+          <Route path="/modalidades" element={<Modalidades />} />
+        </Routes>
+      </div>
+      </Router>
     </div>
   );
 }

@@ -75,7 +75,15 @@ ul {
 }
 
 li {
-  background-color: #f4f4f4; /* Fundo claro para os itens */
+  background-color: white; /* Fundo claro para os itens */;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px; /* Bordas arredondadas para os itens */
+  font-size: 1.2rem; /* Tamanho da fonte dos itens */
+}
+
+.navbar li {
+  background-color: #009; /* Fundo claro para os itens */;
   padding: 10px;
   margin: 5px 0;
   border-radius: 5px; /* Bordas arredondadas para os itens */
@@ -85,4 +93,57 @@ li {
 /* Estilo do contêiner de ações (Adicionar, Deletar) */
 .actions-container {
   margin-bottom: 30px; /* Espaço entre a área de ações e a lista de produtos */
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  padding: 15px 0;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li {
+  display: inline;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.nav-links a:hover {
+  opacity: 0.7;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.logo-img {
+  width: 50px;  /* Ajuste o tamanho da imagem */
+  height: auto;
+  margin-right: 10px; /* Espaço entre a imagem e o texto */
 }

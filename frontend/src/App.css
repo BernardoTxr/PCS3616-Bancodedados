@@ -21,6 +21,65 @@ body {
   text-align: center; /* Texto centralizado */
 }
 
+/* Estilo geral da página */
+.home-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Título principal */
+.home-title {
+  font-family: 'Arial', sans-serif;
+  font-size: 2.5rem;
+  color: #004080;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Descrição do conteúdo */
+.home-description {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #333;
+  text-align: justify;
+  margin-bottom: 20px;
+}
+
+/* Subtítulo */
+.home-subtitle {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.8rem;
+  color: #004080;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Texto adicional */
+.home-text {
+  font-family: 'Arial', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  text-align: justify;
+  margin-bottom: 15px;
+}
+
+/* Rodapé da página */
+.home-footer {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+  color: #004080;
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+
 /* Estilo para o título */
 h1 {
   font-size: 2.5rem;

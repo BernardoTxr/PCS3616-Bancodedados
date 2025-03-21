@@ -399,6 +399,28 @@ def read_modalidade_atleta(id_atleta):
     return jsonify(modalidades_atletas)
 
 
+# api para retornar atletas a partir do id de uma modalidade
+@app.route("/atleta_modalidade/<int:id_modalidade>", methods=["GET"])
+def read_atleta_modalidade(id_modalidade):
+    atletas_modalidades = (
+        db.session.query(Modalidade_Atleta, Atleta.nome_atleta)
+        .join(Atleta, Modalidade_Atleta.id_atleta == Atleta.id_atleta)
+        .filter(Modalidade_Atleta.id_modalidade == id_modalidade)
+        .all()
+    )
+
+    atletas_modalidades = [
+        {
+            "id_modalidade_atleta": atleta_modalidade.id_modalidade_atleta,
+            "id_atleta": atleta_modalidade.id_atleta,
+            "nome_atleta": nome_atleta,
+        }
+        for atleta_modalidade, nome_atleta in atletas_modalidades
+    ]
+
+    return jsonify(atletas_modalidades)
+
+
 # Iniciar a aplicação
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

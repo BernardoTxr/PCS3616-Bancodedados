@@ -15,6 +15,7 @@ export default function Navbar() {
           <li><Link to="/">Home</Link></li>
           <li><Link to="/atletas">Atletas</Link></li>
           <li><Link to="/modalidades">Modalidades</Link></li>
+          <li><Link to="/campeonatos">Campeonatos</Link></li>
         </ul>
       </div>
     </nav>

@@ -245,30 +245,6 @@ def create_modalidade_atleta():
     return jsonify({"message": "Modalidade do atleta criada com sucesso!"})
 
 
-@app.route("/modalidade_atleta", methods=["GET"])
-def read_modalidade_atleta():
-    modalidades_atletas = Modalidade_Atleta.query.all()
-    modalidades_atletas = [
-        {
-            "id_modalidade_atleta": modalidade_atleta.id_modalidade_atleta,
-            "id_modalidade": modalidade_atleta.id_modalidade,
-        }
-        for modalidade_atleta in modalidades_atletas
-    ]
-    return jsonify(modalidades_atletas)
-
-
-@app.route("/modalidade_atleta/<int:id_modalidade_atleta>", methods=["GET"])
-def read_modalidade_atleta_id(id_modalidade_atleta):
-    modalidade_atleta = Modalidade_Atleta.query.get(id_modalidade_atleta)
-    return jsonify(
-        {
-            "id_modalidade_atleta": modalidade_atleta.id_modalidade_atleta,
-            "id_modalidade": modalidade_atleta.id_modalidade,
-        }
-    )
-
-
 @app.route("/modalidade_atleta/<int:id_modalidade_atleta>", methods=["PUT"])
 def update_modalidade_atleta(id_modalidade_atleta):
     data = request.json
@@ -399,6 +375,20 @@ def delete_modalidade_campeonato(id_modalidade_campeonato):
     db.session.delete(modalidade_campeonato)
     db.session.commit()
     return jsonify({"message": "Modalidade do campeonato deletada com sucesso!"})
+
+
+# api para retornar as modalidades as quais um atleta pertence a partir de seu id
+@app.route("/modalidade_atleta/<int:id_atleta>", methods=["GET"])
+def read_modalidade_atleta(id_atleta):
+    modalidades_atletas = Modalidade_Atleta.query.filter_by(id_atleta=id_atleta).all()
+    modalidades_atletas = [
+        {
+            "id_modalidade_atleta": modalidade_atleta.id_modalidade_atleta,
+            "id_modalidade": modalidade_atleta.id_modalidade,
+        }
+        for modalidade_atleta in modalidades_atletas
+    ]
+    return jsonify(modalidades_atletas)
 
 
 # Iniciar a aplicação

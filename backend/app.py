@@ -380,14 +380,22 @@ def delete_modalidade_campeonato(id_modalidade_campeonato):
 # api para retornar as modalidades as quais um atleta pertence a partir de seu id
 @app.route("/modalidade_atleta/<int:id_atleta>", methods=["GET"])
 def read_modalidade_atleta(id_atleta):
-    modalidades_atletas = Modalidade_Atleta.query.filter_by(id_atleta=id_atleta).all()
+    modalidades_atletas = (
+        db.session.query(Modalidade_Atleta, Modalidade.nome_modalidade)
+        .join(Modalidade, Modalidade_Atleta.id_modalidade == Modalidade.id_modalidade)
+        .filter(Modalidade_Atleta.id_atleta == id_atleta)
+        .all()
+    )
+
     modalidades_atletas = [
         {
             "id_modalidade_atleta": modalidade_atleta.id_modalidade_atleta,
             "id_modalidade": modalidade_atleta.id_modalidade,
+            "nome_modalidade": nome_modalidade,
         }
-        for modalidade_atleta in modalidades_atletas
+        for modalidade_atleta, nome_modalidade in modalidades_atletas
     ]
+
     return jsonify(modalidades_atletas)
 
 

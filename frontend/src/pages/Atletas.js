@@ -98,7 +98,7 @@ export default function Atletas() {
                         <h2>Modalidades de {selectedAtleta.nome_atleta}</h2>
                         <ul>
                             {modalidades.length > 0 ? modalidades.map((mod) => (
-                                <li key={mod.id_modalidade}>{mod.id_modalidade}</li>
+                                <li key={mod.id_modalidade}>{mod.nome_modalidade}</li>
                             )) : <p>Este atleta não possui modalidades cadastradas.</p>}
                         </ul>
                         <button onClick={() => setShowModal(false)} style={styles.closeButton}>Fechar</button>

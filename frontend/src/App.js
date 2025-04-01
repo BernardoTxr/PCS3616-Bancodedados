@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import Atletas from './pages/Atletas';
 import Campeonatos from './pages/Campeonatos';
 import Modalidades from './pages/Modalidades';
+import CadastrarTimes from './pages/CadastrarTimes';
+import InscreverCampeonato from './pages/InscreverCampeonato';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
 
@@ -18,6 +20,8 @@ function App() {
           <Route path="/atletas" element={<Atletas />} />
           <Route path="/modalidades" element={<Modalidades />} />
           <Route path="/campeonatos" element={<Campeonatos />} />
+          <Route path="/cadastrar_times" element={<CadastrarTimes />} />
+          <Route path="/inscrever_campeonato" element={<InscreverCampeonato />} />
         </Routes>
       </div>
       </Router>

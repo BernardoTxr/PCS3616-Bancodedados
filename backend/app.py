@@ -118,9 +118,18 @@ def update_atleta(id_atleta):
 @app.route("/atleta/<int:id_atleta>", methods=["DELETE"])
 def delete_atleta(id_atleta):
     atleta = Atleta.query.get(id_atleta)
+
+    if not atleta: 
+        return jsonify({"message": "Atleta não encontrado!"}), 404
+    
+    relacoes = Modalidade_Atleta.query.filter_by(id_atleta=id_atleta).all()
+
+    for relacao in relacoes:
+        db.session.delete(relacao)
+
     db.session.delete(atleta)
     db.session.commit()
-    return jsonify({"message": "Atleta deletado com sucesso!"})
+    return jsonify({"message": "Atleta deletado com sucesso!"}), 200
 
 
 # crud para comissao
@@ -227,9 +236,23 @@ def update_modalidade(id_modalidade):
 @app.route("/modalidade/<int:id_modalidade>", methods=["DELETE"])
 def delete_modalidade(id_modalidade):
     modalidade = Modalidade.query.get(id_modalidade)
+
+    if not modalidade:
+        return jsonify({"message": "Modalidade não encontrada!"}), 404
+
+    relacoesA = Modalidade_Atleta.query.filter_by(id_modalidade=id_modalidade).all()
+
+    for relacao in relacoesA:
+        db.session.delete(relacao)
+
+    relacoesC = Modalidade_Campeonato.query.filter_by(id_modalidade=id_modalidade).all()
+
+    for relacao in relacoesC:
+        db.session.delete(relacao)
+
     db.session.delete(modalidade)
     db.session.commit()
-    return jsonify({"message": "Modalidade deletada com sucesso!"})
+    return jsonify({"message": "Modalidade deletada com sucesso!"}), 200
 
 
 # crud para modalidade_atleta
@@ -273,8 +296,21 @@ def create_campeonato():
         data_fim=data["data_fim"],
         custo_por_pessoa=data["custo_por_pessoa"],
     )
+
     db.session.add(campeonato)
     db.session.commit()
+
+    modals_camp = Modalidade_Campeonato.query.filter_by(id_campeonato=campeonato.id).all()
+    for modal_camp in modals_camp:
+        count_atletas = Modalidade_Atleta.query.filter_by(id_modalidade=modal_camp.id_modalidade).count()
+        modalidade = Modalidade.query.get(modal_camp.id_modalidade)
+        old_saldo = modalidade.saldo_modalidade
+        count_atletas = int(count_atletas)
+        new_saldo = old_saldo - count_atletas*campeonato.custo_por_pessoa
+        modalidade.saldo_modalidade = new_saldo
+        
+    db.session.commit()
+
     return jsonify({"message": "Campeonato criado com sucesso!"})
 
 
@@ -309,6 +345,18 @@ def update_campeonato(id_campeonato):
     campeonato.nome_campeonato = data["nome_campeonato"]
     campeonato.data_inicio = data["data_inicio"]
     campeonato.data_fim = data["data_fim"]
+
+    if (campeonato.custo_por_pessoa != data["custo_por_pessoa"]):
+        modals_camp = Modalidade_Campeonato.query.filter_by(id_campeonato=id_campeonato).all()
+        for modal_camp in modals_camp:
+            count_atletas = Modalidade_Atleta.query.filter_by(id_modalidade=modal_camp.id_modalidade).count()
+            modalidade = Modalidade.query.get(modal_camp.id_modalidade)
+            old_saldo = modalidade.saldo_modalidade
+            custo_por_pessoa = float(data["custo_por_pessoa"]) - campeonato.custo_por_pessoa
+            count_atletas = int(count_atletas)
+            new_saldo = old_saldo - count_atletas*custo_por_pessoa
+            modalidade.saldo_modalidade = new_saldo
+
     campeonato.custo_por_pessoa = data["custo_por_pessoa"]
     db.session.commit()
     return jsonify({"message": "Campeonato atualizado com sucesso!"})
@@ -317,6 +365,15 @@ def update_campeonato(id_campeonato):
 @app.route("/campeonato/<int:id_campeonato>", methods=["DELETE"])
 def delete_campeonato(id_campeonato):
     campeonato = Campeonato.query.get(id_campeonato)
+
+    if not campeonato:
+        return jsonify({"message": "Campeonato não encontrado!"}), 404
+    
+    relacoes = Modalidade_Campeonato.query.filter_by(id_campeonato=id_campeonato).all()
+
+    for relacao in relacoes:
+        db.session.delete(relacao)
+
     db.session.delete(campeonato)
     db.session.commit()
     return jsonify({"message": "Campeonato deletado com sucesso!"})

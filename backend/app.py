@@ -420,6 +420,27 @@ def read_atleta_modalidade(id_modalidade):
 
     return jsonify(atletas_modalidades)
 
+# api para retornar modalidades a partir do id de um campeonato
+@app.route("/modalidade_by_campeonato/<int:id_campeonato>", methods=["GET"])
+def get_modalidade_campeonato(id_campeonato):
+    modalidades_campeonatos = (
+        db.session.query(Modalidade_Campeonato, Modalidade.nome_modalidade)
+        .outerjoin(Modalidade, Modalidade_Campeonato.id_modalidade == Modalidade.id_modalidade)
+        .filter(Modalidade_Campeonato.id_campeonato == id_campeonato)
+        .all()
+    )
+
+    modalidades_campeonatos = [
+    {
+        "id_modalidade_campeonato": modalidade.id_modalidade_campeonato,
+        "id_modalidade": modalidade.id_modalidade,
+        "nome_modalidade": nome_modalidade,
+    }
+    for modalidade, nome_modalidade in modalidades_campeonatos
+    ]
+
+    return jsonify(modalidades_campeonatos)
+
 
 # Iniciar a aplicação
 if __name__ == "__main__":

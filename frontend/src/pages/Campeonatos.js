@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 
 export default function Campeonatos() {
     const [campeonatos, setCampeonatos] = useState([]);
+    const [modalidades, setModalidades] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [selectedCampeonato, setSelectedCampeonato] = useState(null);
     const [formData, setFormData] = useState({
         nome_campeonato: "",
         data_inicio: "",
@@ -19,6 +22,16 @@ export default function Campeonatos() {
             .then((res) => res.json())
             .then((data) => setCampeonatos(data))
             .catch((error) => console.error("Erro ao buscar campeonatos:", error));
+    };
+
+    const fetchModalidades = (id_campeonato) => {
+        fetch(`http://localhost:5000/modalidade_by_campeonato/${id_campeonato}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setModalidades(data);
+                setShowModal(true);
+            })
+            .catch((error) => console.error("Erro ao buscar modalidades:", error));
     };
 
     // 🔹 Atualiza os campos do formulário
@@ -64,7 +77,8 @@ export default function Campeonatos() {
                 <ul>
                     {campeonatos.map((campeonato) => (
                         <li key={campeonato.id_campeonato} style={styles.listItem}>
-                            {campeonato.nome_campeonato}
+                            <p onClick={() => { setSelectedCampeonato(campeonato); fetchModalidades(campeonato.id_campeonato); }} style={styles.atletaNome}>{campeonato.nome_campeonato}<br></br>
+                            Valor por pessoa: R$ {campeonato.custo_por_pessoa}</p>
                             <button onClick={() => handleDelete(campeonato.id_campeonato)} style={styles.deleteButton}>🗑</button>
                         </li>
                     ))}
@@ -82,6 +96,21 @@ export default function Campeonatos() {
                     <button type="submit">Cadastrar</button>
                 </form>
             </div>
+
+            {showModal && selectedCampeonato && (
+                <div style={styles.modal}>
+                    <div style={styles.modalContent}>
+                        <h2>Modalidades de {selectedCampeonato.nome_campeonato}</h2>
+                        <ul>
+                            {modalidades.length > 0 ? modalidades.map((mod) => (
+                                <li>{mod.nome_modalidade}</li>
+                            )) : <p>Este campeonato não possui modalidades cadastradas.</p>}
+                        </ul>
+                        <button onClick={() => setShowModal(false)} style={styles.closeButton}>Fechar</button>
+                    </div>
+                </div>
+            )}
+
         </div>
     );
 }
@@ -120,4 +149,7 @@ const styles = {
         cursor: "pointer",
         borderRadius: "5px",
     },
+    modal: { position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh", background: "rgba(0, 0, 0, 0.5)", display: "flex", alignItems: "center", justifyContent: "center" },
+    modalContent: { background: "white", padding: "20px", borderRadius: "8px", textAlign: "center" },
+    closeButton: { marginTop: "10px", padding: "8px 16px", background: "#007bff", color: "white", border: "none", cursor: "pointer", borderRadius: "5px" },
 };

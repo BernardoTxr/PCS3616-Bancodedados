@@ -127,12 +127,18 @@ const styles = {
         background: "#f8f8f8",
         padding: "20px",
         borderRadius: "8px",
+        maxHeight: "400px", // 🔹 Altura máxima
+        overflowY: "auto", // 🔹 Scroll quando necessário
+        border: "1px solid #ccc",
     },
     rightColumn: {
         flex: 1,
         background: "#e3f2fd",
         padding: "20px",
         borderRadius: "8px",
+        maxHeight: "400px", // 🔹 Altura máxima
+        overflowY: "auto", // 🔹 Scroll quando necessário
+        border: "1px solid #ccc",
     },
     listItem: {
         display: "flex",

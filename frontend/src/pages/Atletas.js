@@ -111,8 +111,8 @@ export default function Atletas() {
 
 const styles = {
     container: { display: "flex", gap: "20px", padding: "20px" },
-    leftColumn: { flex: 1, background: "#f8f8f8", padding: "20px", borderRadius: "8px" },
-    rightColumn: { flex: 1, background: "#e3f2fd", padding: "20px", borderRadius: "8px" },
+    leftColumn: { flex: 1, background: "#f8f8f8", padding: "20px", borderRadius: "8px",  maxHeight: "400px", overflowY: "auto", border: "1px solid #ccc" },
+    rightColumn: { flex: 1, background: "#e3f2fd", padding: "20px", borderRadius: "8px",  maxHeight: "400px", overflowY: "auto", border: "1px solid #ccc" },
     listItem: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px", borderBottom: "1px solid #ccc" },
     atletaNome: { cursor: "pointer", color: "blue", textDecoration: "underline" },
     deleteButton: { background: "red", color: "white", border: "none", padding: "5px 10px", cursor: "pointer", borderRadius: "5px" },

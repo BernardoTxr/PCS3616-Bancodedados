@@ -115,7 +115,11 @@ export default function Modalidades() {
       {showModal && selectedModalidade && (
                 <div style={styles.modal}>
                     <div style={styles.modalContent}>
-                        <h2>Atletas de {selectedModalidade.nome_modalidade}</h2>
+                     <h2>Informações de {selectedModalidade.nome_modalidade}</h2>
+                        <p>Nome: {selectedModalidade.nome_modalidade}</p>
+                        <p>Saldo: R$ {selectedModalidade.saldo_modalidade}</p>
+                        <p>Número de Atletas: {atletas.length}</p>
+                        <h3>Atletas Cadastrados</h3>
                         <ul>
                             {atletas.length > 0 ? atletas.map((atlet) => (
                                 <li key={atlet.id_atleta}>{atlet.nome_atleta}</li>

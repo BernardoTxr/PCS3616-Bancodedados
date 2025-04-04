@@ -16,6 +16,7 @@ export default function Navbar() {
           <li><Link to="/atletas">Atletas</Link></li>
           <li><Link to="/modalidades">Modalidades</Link></li>
           <li><Link to="/campeonatos">Campeonatos</Link></li>
+          <li><Link to="/comissao">Comissão Técnica</Link></li>
           <li><Link to="/inscrever_campeonato">Inscrever Campeonato</Link></li>
           <li><Link to="/cadastrar_times">Cadastrar Times</Link></li>
         </ul>

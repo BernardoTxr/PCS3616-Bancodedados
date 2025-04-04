@@ -67,7 +67,7 @@ export default function CadastrarTimes() {
                 <ul>
                     {atletas.map((atleta) => (
                         <li key={atleta.id_atleta} style={{ ...styles.listItem, background: selectedAtletas.some(a => a.id_atleta === atleta.id_atleta) ? "#c8e6c9" : "transparent" }}>
-                            <span onClick={() => toggleAtletaSelection(atleta)} style={styles.atletaNome}>
+                            <span onClick={() => toggleAtletaSelection(atleta)}>
                                 {atleta.nome_atleta}
                             </span>
                         </li>
@@ -98,6 +98,5 @@ const styles = {
     leftColumn: { background: "#f8f8f8", padding: "20px", borderRadius: "8px", maxHeight: "400px", overflowY: "auto", border: "1px solid #ccc" },
     rightColumn: { background: "#e3f2fd", padding: "20px", borderRadius: "8px", maxHeight: "400px", overflowY: "auto", border: "1px solid #ccc" },
     listItem: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px", borderBottom: "1px solid #ccc", cursor: "pointer" },
-    atletaNome: { cursor: "pointer", color: "blue", textDecoration: "underline" },
     button: { marginTop: "10px", padding: "10px 20px", background: "#007bff", color: "white", border: "none", cursor: "pointer", borderRadius: "5px", alignSelf: "center" },
 };

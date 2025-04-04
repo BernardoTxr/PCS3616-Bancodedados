@@ -100,7 +100,11 @@ export default function Campeonatos() {
             {showModal && selectedCampeonato && (
                 <div style={styles.modal}>
                     <div style={styles.modalContent}>
-                        <h2>Modalidades de {selectedCampeonato.nome_campeonato}</h2>
+                        <h2>Informações de {selectedCampeonato.nome_campeonato}</h2>
+                        <p>Data de Início: {selectedCampeonato.data_inicio}</p>
+                        <p>Data de Fim: {selectedCampeonato.data_fim}</p>
+                        <p>Valor por Pessoa: R$ {selectedCampeonato.custo_por_pessoa}</p>
+                        <h3>Modalidades</h3>
                         <ul>
                             {modalidades.length > 0 ? modalidades.map((mod) => (
                                 <li>{mod.nome_modalidade}</li>

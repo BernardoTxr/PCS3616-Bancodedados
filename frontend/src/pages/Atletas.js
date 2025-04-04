@@ -95,7 +95,11 @@ export default function Atletas() {
             {showModal && selectedAtleta && (
                 <div style={styles.modal}>
                     <div style={styles.modalContent}>
-                        <h2>Modalidades de {selectedAtleta.nome_atleta}</h2>
+                        <h2>Informações de {selectedAtleta.nome_atleta}</h2>
+                        <p>CPF: {selectedAtleta.cpf_atleta}</p>
+                        <p>Curso: {selectedAtleta.curso_atleta}</p>
+                        <p>NUSP: {selectedAtleta.nusp_atleta}</p>
+                        <h3>Modalidades</h3>
                         <ul>
                             {modalidades.length > 0 ? modalidades.map((mod) => (
                                 <li key={mod.id_modalidade}>{mod.nome_modalidade}</li>

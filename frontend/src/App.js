@@ -6,6 +6,7 @@ import Campeonatos from './pages/Campeonatos';
 import Modalidades from './pages/Modalidades';
 import CadastrarTimes from './pages/CadastrarTimes';
 import InscreverCampeonato from './pages/InscreverCampeonato';
+import Comissao from './pages/Comissao';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/campeonatos" element={<Campeonatos />} />
           <Route path="/cadastrar_times" element={<CadastrarTimes />} />
           <Route path="/inscrever_campeonato" element={<InscreverCampeonato />} />
+          <Route path="/comissao" element={<Comissao />} />
         </Routes>
       </div>
       </Router>

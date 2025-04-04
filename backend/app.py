@@ -91,7 +91,13 @@ def create_atleta():
 def read_atleta():
     atletas = Atleta.query.all()
     atletas = [
-        {"id_atleta": atleta.id_atleta, "nome_atleta": atleta.nome_atleta}
+        {    
+            "id_atleta": atleta.id_atleta,
+            "nome_atleta": atleta.nome_atleta,
+            "cpf_atleta": atleta.cpf_atleta,
+            "curso_atleta": atleta.curso_atleta,
+            "nusp_atleta": atleta.nusp_atleta,
+        }
         for atleta in atletas
     ]
     return jsonify(atletas)
@@ -100,7 +106,14 @@ def read_atleta():
 @app.route("/atleta/<int:id_atleta>", methods=["GET"])
 def read_atleta_id(id_atleta):
     atleta = Atleta.query.get(id_atleta)
-    return jsonify({"id_atleta": atleta.id_atleta, "nome_atleta": atleta.nome_atleta})
+    return jsonify(
+        {    
+            "id_atleta": atleta.id_atleta,
+            "nome_atleta": atleta.nome_atleta,
+            "cpf_atleta": atleta.cpf_atleta,
+            "curso_atleta": atleta.curso_atleta,
+            "nusp_atleta": atleta.nusp_atleta,
+        })
 
 
 @app.route("/atleta/<int:id_atleta>", methods=["PUT"])
@@ -147,7 +160,13 @@ def create_comissao():
 def read_comissao():
     comissoes = Comissao.query.all()
     comissoes = [
-        {"id_comissao": comissao.id_comissao, "nome_comissao": comissao.nome_comissao}
+        {
+            "id_comissao": comissao.id_comissao, 
+            "nome_comissao": comissao.nome_comissao,
+            "cpf_comissao": comissao.cpf_comissao,
+            "cargo_comissao": comissao.cargo_comissao,
+            "id_modalidade": comissao.id_modalidade,
+        }
         for comissao in comissoes
     ]
     return jsonify(comissoes)
@@ -301,6 +320,8 @@ def read_campeonato():
             "id_campeonato": campeonato.id_campeonato,
             "nome_campeonato": campeonato.nome_campeonato,
             "custo_por_pessoa": campeonato.custo_por_pessoa,
+            "data_inicio": campeonato.data_inicio,
+            "data_fim": campeonato.data_fim,
         }
         for campeonato in campeonatos
     ]

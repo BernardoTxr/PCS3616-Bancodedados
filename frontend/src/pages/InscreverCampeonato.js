@@ -67,7 +67,7 @@ export default function InscreverCampeonato() {
                 <ul>
                     {modalidades.map((modalidade) => (
                         <li key={modalidade.id_modalidade} style={{ ...styles.listItem, background: selectedModalidades.some(a => a.id_modalidade === modalidade.id_modalidade) ? "#c8e6c9" : "transparent" }}>
-                            <span onClick={() => toggleModalidadeSelection(modalidade)} style={styles.atletaNome}>
+                            <span onClick={() => toggleModalidadeSelection(modalidade)}>
                                 {modalidade.nome_modalidade}
                             </span>
                         </li>
@@ -80,7 +80,7 @@ export default function InscreverCampeonato() {
                 <ul>
                     {campeonatos.map((campeonato) => (
                         <li key={campeonato.id_campeonato} style={{ ...styles.listItem, background: selectedCampeonato?.id_campeonato === campeonato.id_campeonato ? "#bbdefb" : "transparent" }}>
-                            <span onClick={() => setSelectedCampeonato(campeonato)} style={styles.atletaNome}>
+                            <span onClick={() => setSelectedCampeonato(campeonato)}>
                                 {campeonato.nome_campeonato}
                             </span>
                         </li>
@@ -98,6 +98,5 @@ const styles = {
     leftColumn: { background: "#f8f8f8", padding: "20px", borderRadius: "8px", maxHeight: "400px", overflowY: "auto", border: "1px solid #ccc" },
     rightColumn: { background: "#e3f2fd", padding: "20px", borderRadius: "8px", maxHeight: "400px", overflowY: "auto", border: "1px solid #ccc" },
     listItem: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "8px", borderBottom: "1px solid #ccc", cursor: "pointer" },
-    atletaNome: { cursor: "pointer", color: "blue", textDecoration: "underline" },
     button: { marginTop: "10px", padding: "10px 20px", background: "#007bff", color: "white", border: "none", cursor: "pointer", borderRadius: "5px", alignSelf: "center" },
 };
